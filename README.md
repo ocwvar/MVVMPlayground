@@ -2,6 +2,7 @@
 
 *This project has:*
 - MVVM Architecture
-- Kotlin coroutines
+- Kotlin coroutines with retrofit2
 - LiveData
+- DayNight supported
 - Full unit test
