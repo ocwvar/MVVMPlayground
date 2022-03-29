@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp">
+
+    <TextView
+            android:layout_below="@id/account_button_panel"
+            tools:text="Jimmy"
+            android:textSize="20sp"
+            android:textColor="?autoPrimaryTextColor"
+            android:textStyle="bold"
+            android:id="@+id/account_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    <TextView
+            tools:text="Android Developer"
+            android:layout_below="@id/account_name"
+            android:textSize="16sp"
+            android:id="@+id/account_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    <TextView
+            android:textColor="#4CAF50"
+            tools:text="Online"
+            android:layout_below="@id/account_title"
+            android:textSize="16sp"
+            android:id="@+id/account_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    <FrameLayout
+            android:id="@+id/account_loading_panel"
+            android:visibility="gone"
+            android:layout_below="@id/account_button_panel"
+            android:background="?loadingBackgroundColor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ProgressBar
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+</RelativeLayout>
