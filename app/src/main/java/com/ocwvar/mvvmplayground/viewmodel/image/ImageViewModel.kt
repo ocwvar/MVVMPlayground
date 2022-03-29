@@ -23,16 +23,14 @@ class ImageViewModel(
     /**
      * begin to fetch model
      */
-    override fun fetch() {
-        super.beginFetch {
-            val responseBody: ResponseBody = this.model.getModel()
-            if (responseBody.contentLength() <= 0) {
-                postError("Content length is 0")
-                return@beginFetch
-            }
-
-            val bytes: ByteArray = responseBody.bytes()
-            this.mLiveData.postValue(ImageModel.Model(bytes))
+    override fun fetch() = super.beginFetch {
+        val responseBody: ResponseBody = this.model.getModel()
+        if (responseBody.contentLength() <= 0) {
+            postError("Content length is 0")
+            return@beginFetch
         }
+
+        val bytes: ByteArray = responseBody.bytes()
+        this.mLiveData.postValue(ImageModel.Model(bytes))
     }
 }

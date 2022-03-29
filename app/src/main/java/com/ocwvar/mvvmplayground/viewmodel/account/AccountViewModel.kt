@@ -21,20 +21,18 @@ class AccountViewModel(
     /**
      * begin to fetch model
      */
-    override fun fetch() {
-        super.beginFetch {
-            //request user model for it's user name
-            val userModel = this.model.getUserInfoModel()
-            if (super.hasError(userModel)) return@beginFetch
+    override fun fetch() = super.beginFetch {
+        //request user model for it's user name
+        val userModel = this.model.getUserInfoModel()
+        if (super.hasError(userModel)) return@beginFetch
 
-            //using user name to request user status
-            val statusModel = this.model.getStatusModel(userModel.getData().name)
-            if (super.hasError(statusModel)) return@beginFetch
+        //using user name to request user status
+        val statusModel = this.model.getStatusModel(userModel.getData().name)
+        if (super.hasError(statusModel)) return@beginFetch
 
-            //assemble two model into a display model
-            val displayModel = assembleDisplayModel(userModel.getData(), statusModel.getData())
-            this.mLiveData.postValue(displayModel)
-        }
+        //assemble two model into a display model
+        val displayModel = assembleDisplayModel(userModel.getData(), statusModel.getData())
+        this.mLiveData.postValue(displayModel)
     }
 
     /**

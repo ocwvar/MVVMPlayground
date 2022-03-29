@@ -21,12 +21,10 @@ class HomeViewModel(
     /**
      * begin to fetch model
      */
-    override fun fetch() {
-        super.beginFetch {
-            val responseModel = this.model.getModel()
-            if (super.hasError(responseModel)) return@beginFetch
+    override fun fetch() = super.beginFetch {
+        val responseModel = this.model.getModel()
+        if (super.hasError(responseModel)) return@beginFetch
 
-            this.mLiveData.postValue(responseModel.getData())
-        }
+        this.mLiveData.postValue(responseModel.getData())
     }
 }
