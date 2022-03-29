@@ -7,15 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
+import com.ocwvar.mvvmplayground.base.BaseVMFragment
 import com.ocwvar.mvvmplayground.databinding.FragmentHomeBinding
-import com.ocwvar.mvvmplayground.base.BaseFragment
 import com.ocwvar.mvvmplayground.base.RemoteRequestViewModelFactory
 import com.ocwvar.mvvmplayground.view.fragment.account.AccountFragment
 import com.ocwvar.mvvmplayground.view.fragment.image.ImageFragment
 import com.ocwvar.mvvmplayground.viewmodel.home.HomeViewModel
 
 @SuppressLint("SetTextI18n")
-class HomeFragment : BaseFragment<HomeViewModel>() {
+class HomeFragment : BaseVMFragment<HomeViewModel>() {
 
     companion object {
         fun newPage(): HomeFragment {

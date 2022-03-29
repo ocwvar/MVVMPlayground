@@ -7,12 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.ocwvar.mvvmplayground.base.BaseFragment
+import com.ocwvar.mvvmplayground.base.BaseVMFragment
 import com.ocwvar.mvvmplayground.base.RemoteRequestViewModelFactory
 import com.ocwvar.mvvmplayground.databinding.FragmentImageBinding
 import com.ocwvar.mvvmplayground.viewmodel.image.ImageViewModel
 
-class ImageFragment : BaseFragment<ImageViewModel>()  {
+class ImageFragment : BaseVMFragment<ImageViewModel>()  {
 
     companion object {
         fun newPage(): ImageFragment {
