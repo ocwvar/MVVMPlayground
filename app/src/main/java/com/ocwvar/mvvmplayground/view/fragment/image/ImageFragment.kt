@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.ocwvar.mvvmplayground.base.BaseVMFragment
 import com.ocwvar.mvvmplayground.base.RemoteRequestViewModelFactory
+import com.ocwvar.mvvmplayground.base.ext.setOnClickListenerWithDelay
 import com.ocwvar.mvvmplayground.databinding.FragmentImageBinding
 import com.ocwvar.mvvmplayground.viewmodel.image.ImageViewModel
 
@@ -41,7 +42,7 @@ class ImageFragment : BaseVMFragment<ImageViewModel>()  {
             this.viewBinding.imageDisplay.setImageBitmap(convertBytes2Bitmap(model.bytes))
         }
 
-        this.viewBinding.imageFetch.setOnClickListener {
+        this.viewBinding.imageFetch.setOnClickListenerWithDelay {
             getViewModel().fetch()
         }
     }
