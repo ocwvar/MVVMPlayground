@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.DialogCompat
 import com.ocwvar.mvvmplayground.R
 import com.ocwvar.mvvmplayground.base.BaseFragment
+import com.ocwvar.mvvmplayground.base.ext.setOnClickListenerWithDelay
 import com.ocwvar.mvvmplayground.databinding.FragmentA12DialogBinding
 
 @RequiresApi(Build.VERSION_CODES.S)
@@ -70,7 +71,7 @@ class A12DialogFragment : BaseFragment() {
         initAllSeekBar()
 
         //
-        this.viewBinding.dialogShow.setOnClickListener {
+        this.viewBinding.dialogShow.setOnClickListenerWithDelay {
             blurDialog = getAlertDialog("Dialog title here", "Im Loooonnnnnggg content text! Im Loooonnnnnggg content text! Im Loooonnnnnggg content text! Im Loooonnnnnggg content text! Im Loooonnnnnggg content text! Im Loooonnnnnggg content text! ")
             blurDialog?.show()
 

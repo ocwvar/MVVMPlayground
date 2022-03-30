@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import com.ocwvar.mvvmplayground.base.BaseVMFragment
 import com.ocwvar.mvvmplayground.databinding.FragmentHomeBinding
 import com.ocwvar.mvvmplayground.base.RemoteRequestViewModelFactory
+import com.ocwvar.mvvmplayground.base.ext.setOnClickListenerWithDelay
 import com.ocwvar.mvvmplayground.view.fragment.a12.dialog.A12DialogFragment
 import com.ocwvar.mvvmplayground.view.fragment.account.AccountFragment
 import com.ocwvar.mvvmplayground.view.fragment.image.ImageFragment
@@ -54,33 +55,33 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
         }
 
         // bind click event to button
-        this.viewBinding.homeFetch.setOnClickListener {
+        this.viewBinding.homeFetch.setOnClickListenerWithDelay {
             getViewModel().fetch()
         }
 
-        this.viewBinding.homeImage.setOnClickListener {
+        this.viewBinding.homeImage.setOnClickListenerWithDelay {
             nextFragment(this, ImageFragment.newPage())
         }
 
-        this.viewBinding.homeNextPage.setOnClickListener {
+        this.viewBinding.homeNextPage.setOnClickListenerWithDelay {
             nextFragment(this, AccountFragment.newPage())
         }
 
-        this.viewBinding.homeA12Dialog.setOnClickListener {
+        this.viewBinding.homeA12Dialog.setOnClickListenerWithDelay {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 nextFragment(this, A12DialogFragment.newPage())
             }
         }
 
-        this.viewBinding.homeThemeAuto.setOnClickListener {
+        this.viewBinding.homeThemeAuto.setOnClickListenerWithDelay {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         }
 
-        this.viewBinding.homeThemeLight.setOnClickListener {
+        this.viewBinding.homeThemeLight.setOnClickListenerWithDelay {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
 
-        this.viewBinding.homeThemeNight.setOnClickListener {
+        this.viewBinding.homeThemeNight.setOnClickListenerWithDelay {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
     }
