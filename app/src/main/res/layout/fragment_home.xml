@@ -64,6 +64,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+    <Button
+            android:id="@+id/home_a12_dialog"
+            android:text="Android Blur Background Dialog"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     <TextView
             style="@style/TextAppearance.AppCompat.Title"
             android:text="Home page data"

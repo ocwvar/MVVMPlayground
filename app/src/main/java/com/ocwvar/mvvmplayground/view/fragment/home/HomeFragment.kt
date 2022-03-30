@@ -1,21 +1,23 @@
 package com.ocwvar.mvvmplayground.view.fragment.home
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
+import com.ocwvar.mvvmplayground.base.BaseVMFragment
 import com.ocwvar.mvvmplayground.databinding.FragmentHomeBinding
-import com.ocwvar.mvvmplayground.base.BaseFragment
 import com.ocwvar.mvvmplayground.base.RemoteRequestViewModelFactory
+import com.ocwvar.mvvmplayground.view.fragment.a12.dialog.A12DialogFragment
 import com.ocwvar.mvvmplayground.view.fragment.account.AccountFragment
 import com.ocwvar.mvvmplayground.view.fragment.image.ImageFragment
 import com.ocwvar.mvvmplayground.viewmodel.home.HomeViewModel
 
 @SuppressLint("SetTextI18n")
-class HomeFragment : BaseFragment<HomeViewModel>() {
+class HomeFragment : BaseVMFragment<HomeViewModel>() {
 
     companion object {
         fun newPage(): HomeFragment {
@@ -42,27 +44,16 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //observer data change from live date from view model of this page
+        // init button status first
+        initButtonStatus()
+
+        //ob server data change from live date from view model of this page
         getViewModel().liveData.observe(viewLifecycleOwner) { model ->
             //apply any change to Ui
             this.viewBinding.homeContent.text = model.content + "  ${System.currentTimeMillis()}"
         }
 
-        when(AppCompatDelegate.getDefaultNightMode()) {
-            AppCompatDelegate.MODE_NIGHT_YES -> {
-                this.viewBinding.homeThemeNight.isEnabled = false
-            }
-
-            AppCompatDelegate.MODE_NIGHT_NO -> {
-                this.viewBinding.homeThemeLight.isEnabled = false
-            }
-
-            else -> {
-                this.viewBinding.homeThemeAuto.isEnabled = false
-            }
-        }
-
-        //bind click event to button
+        // bind click event to button
         this.viewBinding.homeFetch.setOnClickListener {
             getViewModel().fetch()
         }
@@ -73,6 +64,12 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
 
         this.viewBinding.homeNextPage.setOnClickListener {
             nextFragment(this, AccountFragment.newPage())
+        }
+
+        this.viewBinding.homeA12Dialog.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                nextFragment(this, A12DialogFragment.newPage())
+            }
         }
 
         this.viewBinding.homeThemeAuto.setOnClickListener {
@@ -86,6 +83,29 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         this.viewBinding.homeThemeNight.setOnClickListener {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
+    }
+
+    /**
+     * init all buttons status
+     */
+    private fun initButtonStatus() {
+        // day-night buttons
+        when (AppCompatDelegate.getDefaultNightMode()) {
+            AppCompatDelegate.MODE_NIGHT_YES -> {
+                this.viewBinding.homeThemeNight.isEnabled = false
+            }
+
+            AppCompatDelegate.MODE_NIGHT_NO -> {
+                this.viewBinding.homeThemeLight.isEnabled = false
+            }
+
+            else -> {
+                this.viewBinding.homeThemeAuto.isEnabled = false
+            }
+        }
+
+        // A12 button
+        this.viewBinding.homeA12Dialog.isEnabled = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
     }
 
     /**

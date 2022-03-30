@@ -5,15 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.fragment.app.viewModels
-import com.ocwvar.mvvmplayground.base.BaseFragment
+import com.ocwvar.mvvmplayground.base.BaseVMFragment
 import com.ocwvar.mvvmplayground.base.RemoteRequestViewModelFactory
 import com.ocwvar.mvvmplayground.databinding.FragmentAccountBinding
 import com.ocwvar.mvvmplayground.viewmodel.account.AccountViewModel
 
 @SuppressLint("SetTextI18n")
-class AccountFragment : BaseFragment<AccountViewModel>() {
+class AccountFragment : BaseVMFragment<AccountViewModel>() {
 
     companion object {
         fun newPage(): AccountFragment {
