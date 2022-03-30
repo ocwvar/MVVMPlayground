@@ -31,6 +31,13 @@ abstract class BaseFragment : Fragment(){
     }
 
     /**
+     * go back to last fragment
+     */
+    fun goBack() {
+        parentFragmentManager.popBackStackImmediate()
+    }
+
+    /**
      * setup toolbar for fragment
      */
     private fun setupToolBar() {
